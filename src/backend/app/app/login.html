@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+</head>
+
+<body>
+    <form action="/api/v1/login?redirect_url=" method="post">
+        <input type="hidden" name="redirect_url" value="http://127.0.0.1:8000/api/v1/test">
+        <div><label>Username: <input type="text" name="username"></label></div>
+        <div><label>Password: <input type="password" name="password"></label></div>
+        <div><button type="submit">Login</button></div>
+    </form>
+    <script>
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const redirectUrl = params.get('redirect_url');
+            if (redirectUrl) {
+                var form = document.querySelector('form');
+                const newActionUrl = `/api/v1/login?redirect_url=${encodeURIComponent(redirectUrl)}`;
+                form.action = newActionUrl;
+            }
+        };
+    </script>
+</body>
+
+</html>
