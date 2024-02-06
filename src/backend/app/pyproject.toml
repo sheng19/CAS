@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.11"
 fastapi = "^0.109.2"
 uvicorn = {extras = ["standard"], version = "^0.27.0.post1"}
+python-multipart = "^0.0.7"
+pydantic-settings = "^2.1.0"
+itsdangerous = "^2.1.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -17,3 +20,13 @@ ruff = "^0.2.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+select = ["E", "F", "I", "UP"]
+target-version = "py311"
+
+[tool.ruff.isort]
+known-local-folder = ["api", "core"]
+
+[tool.ruff.format]
+quote-style = "single"
